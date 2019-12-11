@@ -119,8 +119,13 @@ case $(uname -s) in
             x86_64)
                 echo 'uname -m identifies an x86_64 environment.'
                 IS_MSYS2=1
-                UNIX_CXX=x86_64-pc-msys-g++
-                MINGW_CXX=x86_64-w64-mingw32-g++
+                if [ "$MSYSTEM" = "MINGW32" ]; then
+                    UNIX_CXX=i686-pc-msys-g++
+                    MINGW_CXX=i686-w64-mingw32-g++.exe
+                else
+                    UNIX_CXX=x86_64-pc-msys-g++
+                    MINGW_CXX=x86_64-w64-mingw32-g++
+                fi
                 ;;
             *)
                 echo 'Error: uname -m did not match either i686 or x86_64.'
