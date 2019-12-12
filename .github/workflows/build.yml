@@ -3,7 +3,7 @@ name: build
 on: push
 
 jobs:
-  mysys2:
+  msys2:
     runs-on: windows-latest
     strategy:
       fail-fast: false
