@@ -61,7 +61,7 @@ jobs:
             make install PREFIX=dist
           '@
           & "$env:GITHUB_WORKSPACE\msys${{ matrix.arch }}\usr\bin\bash" -c -l $script
-          tar -C ./dist -czvf winpty.tar.gz ./
+          tar czvf winpty.tar.gz dist --transform s/dist/winpty/
       - uses: actions/upload-artifact@v1
         with:
           name: winpty-x${{ matrix.arch }}
